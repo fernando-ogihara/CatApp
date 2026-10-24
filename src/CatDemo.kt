@@ -1,23 +1,31 @@
 
-// This file demonstrates OBJECT creation and usage
+fun walkAndReport(cat: Cat, distance: Int) {
+    if (cat.walk(distance)) {
+        println("${cat.name} walked $distance. Weight is now ${cat.weight}.")
+    } else {
+        println("${cat.name} cannot walk $distance (weight must stay at ${Cat.MIN_WEIGHT} or more).")
+    }
+}
+
+fun eatAndReport(cat: Cat, amount: Int) {
+    if (cat.eat(amount)) {
+        println("${cat.name} ate $amount. Weight is now ${cat.weight}.")
+    } else {
+        println("${cat.name} cannot eat $amount (weight must stay at ${Cat.MAX_WEIGHT} or less).")
+    }
+}
+
 fun main() {
 
-    // OBJECT: An object is a specific instance of a class.
-
-    // Here, binnie and clyde are objects of the Cat class.
-    // We are calling the CONSTRUCTOR to create them.
-
     val binnie = Cat("Binnie", 10, 10)
-    val clyde = Cat("Clyde", 5, 5)
+    val clyde = Cat("Clyde", 5, 6)
 
-    // Calling a METHOD on each object
-    binnie.walk()
-    clyde.walk()
+    walkAndReport(binnie, 3)
+    eatAndReport(binnie, 1)
+    walkAndReport(clyde, 3)
+    eatAndReport(clyde, 20)
 
-    /* println(objectName)
-        automatically calls the toString() method
-        to determine how the object should be displayed. */
-
+    println()
     println(binnie)
     println(clyde)
 }
